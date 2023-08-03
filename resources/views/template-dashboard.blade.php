@@ -87,10 +87,10 @@
                     <tr>
                         <th>Name</th>
                         <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Bahagian</th>
+                        <th>Email</th>
+                        <th>Telefon</th>
+                        <th>Tindakan</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -99,12 +99,22 @@
                 @foreach ( $senaraiStaff AS $staff )
 
                     <tr>
-                        <td>{{ $staff['name'] }}</td>
-                        <td>{{ $staff['position'] }}</td>
-                        <td><?php echo $staff['office']; ?></td>
-                        <td><?php echo $staff['age']; ?></td>
-                        <td><?php echo $staff['start_date']; ?></td>
-                        <td><?php echo $staff['salary']; ?></td>
+                        <td>{{ $staff->name }}</td>
+                        <td>{{ $staff->jawatan }}</td>
+                        <td>{{ $staff->bahagian_id }}</td>
+                        <td>{{ $staff->email }}</td>
+                        <td>{{ $staff->telefon }}</td>
+                        <td>
+                            <a href="{{ route('users.edit', $staff->id) }}" class="btn btn-primary">
+                                Edit
+                            </a>
+                            <a href="" class="btn btn-success">
+                                Detail
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                Delete
+                            </button>
+                        </td>
                     </tr>
 
                 @endforeach

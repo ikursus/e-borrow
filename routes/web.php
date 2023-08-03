@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermohonanController;
+use App\Http\Controllers\UserController;
 
 // Halaman utama
 Route::get('/', function () {
@@ -19,7 +20,7 @@ Route::get('/login', [LoginController::class, 'borangLogin'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.check');
 
 
-Route::get('/dashboard', DashboardController::class); // Invokable method. tiada array dan nama function
+Route::get('/dashboard', DashboardController::class)->name('dashboard'); // Invokable method. tiada array dan nama function
 
 Route::get('/profile', fn() => view('template-profile'));
 Route::patch('/profile', fn() => 'Kemaskini profile berjaya');
@@ -35,3 +36,4 @@ Route::patch('/profile', fn() => 'Kemaskini profile berjaya');
 
 Route::resource('/permohonan', PermohonanController::class);
 
+Route::resource('users', UserController::class);
