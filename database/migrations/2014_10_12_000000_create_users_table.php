@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('jawatan')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
 
             // Foreign key
             $table->foreign('bahagian_id')->references('id')->on('bahagian');
