@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('permohonan', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('pegawai_pemohon_id')->unsigned();
+            $table->unsignedBigInteger('pegawai_bertanggungjawab_id');
+            $table->date('tarikh_jangka_pinjam')->nullable();
+            $table->date('tarikh_jangka_pulang')->nullable();
             $table->timestamps();
         });
     }
