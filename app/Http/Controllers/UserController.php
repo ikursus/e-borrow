@@ -94,6 +94,11 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Delete rekod user berdasarkan ID
+        DB::table('users')->where('id', $id)->delete();
+
+        // Return redirect ke halaman senarai pengguna
+        // dan bagi Flash Messaging untuk makluman rekod berjaya dikemaskini
+        return redirect()->route('users.index')->with('mesej-berjaya', 'Rekod telah dipadam');
     }
 }

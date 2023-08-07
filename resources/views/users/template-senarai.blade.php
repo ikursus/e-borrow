@@ -57,9 +57,39 @@
                             <a href="{{ route('users.show', $staff->id) }}" class="btn btn-success">
                                 Detail
                             </a>
-                            <button type="submit" class="btn btn-danger">
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-delete-{{ $staff->id }}">
                                 Delete
                             </button>
+
+                            <!-- Modal -->
+                            <form method="POST" action="{{ route('users.destroy', $staff->id) }}">
+
+                                @csrf
+                                @method('DELETE')
+
+                                <div class="modal fade" id="modal-delete-{{ $staff->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Confirmation</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                        Adakah anda bersetuju untuk menghapuskan / padam data ini?
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+                            </form>
+
+
                         </td>
                     </tr>
 
