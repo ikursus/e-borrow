@@ -56,9 +56,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $user = DB::table('users')->where('id', $id)->first();
+        $staff = DB::table('users')->where('id', $id)->first();
 
-        return view('users.template-edit', ['user' => $user]);
+        return view('users.template-edit', ['staff' => $staff]);
     }
 
     /**
