@@ -12,7 +12,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $senaraiStaff = DB::table('users')
+        ->paginate(20);
+
+        // Dump and die
+        // dd($senaraiStaff);
+
+        // return view('users.template-senarai', ['senaraiStaff' => $senaraiStaff]);
+        return view('users.template-senarai', compact('senaraiStaff'));
     }
 
     /**
@@ -36,7 +43,12 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Dapatkan rekod staff/pengguna berdasarkan ID
+        $staff = DB::table('users')->where('id', '=', $id)->first();
+
+        // dd($staff);
+
+        return view('users.template-detail', compact('staff'));
     }
 
     /**
