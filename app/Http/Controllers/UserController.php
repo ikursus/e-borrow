@@ -27,7 +27,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        // Dapatkan dropdown senarai bahagian
+        $senaraiBahagian = DB::table('bahagian')->select('id', 'nama')->get();
+
+        return view('users.template-add', ['senaraiBahagian' => $senaraiBahagian]);
     }
 
     /**
@@ -35,7 +38,29 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Dapatkan data yang boleh dikemaskini daripada borang edit
+        // Jika menggunakan Query Builder, tetapkan data apa yang boleh ditambah
+        $data = $request->validate([
+            'name' => ['required'],
+            'email' => ['required', 'email:filter'],
+            'telefon' => ['nullable', 'sometimes'],
+            'jawatan' => ['nullable', 'sometimes'],
+            'bahagian_id' => ['required', 'integer']
+        ]);
+
+        // Jika password diisi, attachkan data password yang di encrypt kepada
+        // array $data
+        if ($request->has('password') && $request->filled('password'))
+        {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        // Kemaskini rekod user berdasarkan ID
+        DB::table('users')->insert($data);
+
+        // Return redirect ke halaman senarai pengguna
+        // dan bagi Flash Messaging untuk makluman rekod berjaya dikemaskini
+        return redirect()->route('users.index')->with('mesej-berjaya', 'Rekod telah ditambah');
     }
 
     /**
