@@ -15,6 +15,9 @@
             Senarai Pengguna
         </div>
         <div class="card-body">
+
+            @include('layout.alerts')
+
             <table id="datatablesSimple">
                 <thead>
                     <tr>

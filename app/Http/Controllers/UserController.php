@@ -60,7 +60,7 @@ class UserController extends Controller
         $staff = DB::table('users')->where('id', $id)->first();
 
         // Dapatkan dropdown senarai bahagian
-        $senaraiBahagian = DB::table('bahagian')->get();
+        $senaraiBahagian = DB::table('bahagian')->select('id', 'nama')->get();
 
         return view('users.template-edit', ['staff' => $staff, 'senaraiBahagian' => $senaraiBahagian]);
     }
@@ -70,17 +70,23 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // Dapatkan data yang boleh dikemaskini daripada borang edit
+        // Jika menggunakan Query Builder, tetapkan data apa yang boleh dikemaskini
+        $data = $request->only(['name', 'email', 'telefon', 'jawatan', 'bahagian_id']);
 
-        $data = $request->only(['name', 'email', 'telefon']);
-
+        // Jika password diisi, attachkan data password yang di encrypt kepada
+        // array $data
         if ($request->has('password') && $request->filled('password'))
         {
             $data['password'] = bcrypt($request->password);
         }
 
+        // Kemaskini rekod user berdasarkan ID
         DB::table('users')->where('id', $id)->update($data);
 
-        return redirect()->route('dashboard');
+        // Return redirect ke halaman senarai pengguna
+        // dan bagi Flash Messaging untuk makluman rekod berjaya dikemaskini
+        return redirect()->route('users.index')->with('mesej-berjaya', 'Rekod telah dikemaskini');
     }
 
     /**

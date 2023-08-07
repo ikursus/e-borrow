@@ -7,3 +7,9 @@
         </ul>
     </div>
 @endif
+
+@if (session('mesej-berjaya'))
+    <div class="alert alert-success" role="alert">
+        {{ session('mesej-berjaya') }}
+    </div>
+@endif
