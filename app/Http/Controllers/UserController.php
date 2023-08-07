@@ -56,9 +56,13 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
+        // Dapatkan rekod staff/pengguna berdasarkan ID
         $staff = DB::table('users')->where('id', $id)->first();
 
-        return view('users.template-edit', ['staff' => $staff]);
+        // Dapatkan dropdown senarai bahagian
+        $senaraiBahagian = DB::table('bahagian')->get();
+
+        return view('users.template-edit', ['staff' => $staff, 'senaraiBahagian' => $senaraiBahagian]);
     }
 
     /**

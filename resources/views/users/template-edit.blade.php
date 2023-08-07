@@ -28,7 +28,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">Bahagian</label>
-                            <select name="bahagian_id">
+                            <select name="bahagian_id" class="form-control">
 
                                 <option value="">-- Sila Pilih --</option>
 
