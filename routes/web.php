@@ -36,4 +36,15 @@ Route::patch('/profile', fn() => 'Kemaskini profile berjaya');
 
 Route::resource('/permohonan', PermohonanController::class);
 
-Route::resource('users', UserController::class);
+// Syarat menggunakan Route resource, pastikan semua function/method di dalam Controller
+// turut menggunakan resource iaitu index, create, store, show, edit, update, destroy
+Route::resource('/users', UserController::class);
+
+// Contoh routing tanpa menggunakan resource
+// Route::get('/users', [UserController::class, 'index'])->name('users.index');
+// Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+// Route::post('/users', [UserController::class, 'store'])->name('users.store');
+// Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+// Route::get('/users/{id}', [UserController::class, 'edit'])->name('users.edit');
+// Route::patch('/users', [UserController::class, 'update'])->name('users.update');
+// Route::delete('/users', [UserController::class, 'destroy'])->name('users.destroy');
