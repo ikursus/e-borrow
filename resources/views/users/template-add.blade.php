@@ -15,6 +15,8 @@
             <div class="card">
                 <div class="card-body">
 
+                    @include('layout.alerts')
+
                     @include('users.borang')
 
                 </div>
