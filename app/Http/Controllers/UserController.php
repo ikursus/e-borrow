@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
@@ -45,7 +46,8 @@ class UserController extends Controller
             'email' => ['required', 'email:filter'],
             'telefon' => ['nullable', 'sometimes'],
             'jawatan' => ['nullable', 'sometimes'],
-            'bahagian_id' => ['required', 'integer']
+            'bahagian_id' => ['required', 'integer'],
+            'password' => ['required', Password::min(3)]
         ]);
 
         // Jika password diisi, attachkan data password yang di encrypt kepada

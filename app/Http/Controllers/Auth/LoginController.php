@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -27,23 +28,35 @@ class LoginController extends Controller
     // Dan buat semakan maklumat login
     public function authenticate(Request $request)
     {
-        // Dapatkan semua data
-        //$data = $request->all();
-        $data = $request->validate([
-            'email' => ['required', 'email:filter'],
-            'password' => ['required', 'min:3']
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
 
-        // Dapatkan single data
-        // $data = $request->input('email');
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
-        // Dapatkan data - data tertentu
-        // $data = $request->only(['email', 'password']); // $request->except(['_token'])
+            return redirect()->intended('dashboard');
+        }
 
-        return $data;
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
 
-        // return redirect()->route('utama');
+    }
 
+    /**
+     * Log the user out of the application.
+     */
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
 }

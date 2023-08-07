@@ -3,7 +3,7 @@
 @section('isi-kandungan-utama')
 
     <h1 class="mt-4">
-        {{ $pageTitle }}
+        Selamat Datang {{ auth()->user()->name }}
     </h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Dashboard</li>
