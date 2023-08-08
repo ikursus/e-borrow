@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PermohonanController extends Controller
@@ -11,7 +12,9 @@ class PermohonanController extends Controller
      */
     public function index()
     {
-        return view('folder-permohonan.template-senarai');
+        $senaraiPermohonan = collect();
+
+        return view('folder-permohonan.template-senarai', compact('senaraiPermohonan'));
     }
 
     /**
@@ -19,7 +22,9 @@ class PermohonanController extends Controller
      */
     public function create()
     {
-        //
+        $senaraiPegawaiBertanggungjawab = User::select('id', 'name')->get();
+
+        return view('folder-permohonan.template-add', compact('senaraiPegawaiBertanggungjawab'));
     }
 
     /**
@@ -43,7 +48,8 @@ class PermohonanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $permohonan = NULL;
+        return view('folder-permohonan.template-edit', compact('permohonan'));
     }
 
     /**

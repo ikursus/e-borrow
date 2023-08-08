@@ -47,7 +47,7 @@
                     <tr>
                         <td>{{ $staff->name }}</td>
                         <td>{{ $staff->jawatan }}</td>
-                        <td>{{ $staff->bahagian_id }}</td>
+                        <td>{{ $staff->nama_bahagian }}</td>
                         <td>{{ $staff->email }}</td>
                         <td>{{ $staff->telefon }}</td>
                         <td>

@@ -13,8 +13,14 @@ class UserController extends Controller
      */
     public function index()
     {
+        // $senaraiStaff = DB::table('users')
+        // ->paginate(20);
         $senaraiStaff = DB::table('users')
+        ->leftJoin('bahagian', 'users.bahagian_id', '=', 'bahagian.id')
+        ->select('users.*', 'bahagian.nama AS nama_bahagian')
         ->paginate(20);
+
+        //dd($senaraiStaff);
 
         // Dump and die
         // dd($senaraiStaff);
