@@ -38,3 +38,19 @@
     <label class="form-label">Lokasi Tujuan</label>
     <input type="text" class="form-control" name="lokasi_tujuan" value="{{ old('lokasi_tujuan') ?? (isset($permohonan) ? $permohonan->lokasi_tujuan : NULL) }}">
 </div>
+
+<div class="mb-3">
+    <label class="form-label">Status</label>
+    <select name="status" class="form-control">
+
+        <option value="">-- Sila Pilih --</option>
+
+        @foreach (\App\Models\Permohonan::listStatus() as $key => $value)
+        <option value="{{ $key }}" {{ old('status') ?? (isset($permohonan) ? $permohonan->status : NULL) == $key ? ' selected="selected"' : NULL }}>
+            {{ $value }}
+        </option>
+        @endforeach
+
+    </select>
+
+</div>

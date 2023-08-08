@@ -21,6 +21,7 @@
             <table id="datatablesSimple">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Name</th>
                         <th>Position</th>
                         <th>Bahagian</th>
@@ -29,22 +30,13 @@
                         <th>Tindakan</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Bahagian</th>
-                        <th>Email</th>
-                        <th>Telefon</th>
-                        <th>Tindakan</th>
-                    </tr>
-                </tfoot>
                 <tbody>
 
 
                 @foreach ( $senaraiStaff AS $staff )
 
                     <tr>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $staff->name }}</td>
                         <td>{{ $staff->jawatan }}</td>
                         <td>{{ $staff->nama_bahagian }}</td>
