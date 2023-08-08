@@ -26,23 +26,13 @@
                         <th>Tindakan</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>Pemohon</th>
-                        <th>Pegawai Bertanggungjawab</th>
-                        <th>Tarikh Jangka Pinjam</th>
-                        <th>Tujuan</th>
-                        <th>Status</th>
-                        <th>Tindakan</th>
-                    </tr>
-                </tfoot>
                 <tbody>
 
                 @forelse ( $senaraiPermohonan AS $permohonan )
 
                     <tr>
-                        <td>{{ $permohonan->pegawai_pemohon_id }}</td>
-                        <td>{{ $permohonan->pegawai_bertanggungjawab_id }}</td>
+                        <td>{{ $permohonan->pegawaiPemohon->name }}</td>
+                        <td>{{ $permohonan->pegawaiBertanggungjawab->name }}</td>
                         <td>{{ $permohonan->tarikh_jangka_pinjam }}</td>
                         <td>{{ $permohonan->tujuan_permohonan }}</td>
                         <td>{{ $permohonan->status }}</td>

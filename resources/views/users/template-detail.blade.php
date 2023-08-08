@@ -52,4 +52,42 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-xl-12">
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Senarai Permohonan {{ $staff->name }}
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Tarikh Jangka Pinjam</th>
+                            <th>Tarikh Jangka Pulang</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach ($staff->senaraiPermohonan as $permohonan)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $permohonan->tarikh_jangka_pinjam }}</td>
+                            <td>{{ $permohonan->tarikh_jangka_pulang }}</td>
+                            <td>{{ $permohonan->status }}</td>
+                        </tr>
+                        @endforeach
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 @endsection

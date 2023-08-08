@@ -63,6 +63,15 @@ class Permohonan extends Model
         ];
     }
 
+    public function pegawaiPemohon()
+    {
+        return $this->belongsTo(User::class, 'pegawai_pemohon_id', 'id');
+    }
+
+    public function pegawaiBertanggungjawab()
+    {
+        return $this->belongsTo(User::class, 'pegawai_bertanggungjawab_id', 'id');
+    }
 
 }
 

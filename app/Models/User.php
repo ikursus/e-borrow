@@ -43,4 +43,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function senaraiPermohonan()
+    {
+        return $this->hasMany(Permohonan::class, 'pegawai_pemohon_id');
+    }
 }
