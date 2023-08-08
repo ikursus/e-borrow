@@ -76,16 +76,29 @@ class PermohonanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    // public function update(Request $request, string $id)
+    public function update(Request $request, Permohonan $permohonan)
     {
+        $data = $request->all();
+
+        // Permohonan::where('id', $id)->update($data);
+        // $permohonan = Permohonan::find($id);
+        $permohonan->update($data);
+
+        return redirect()->route('permohonan.index')->with('mesej-berjaya', 'Permohonan berjaya dikemaskini');
 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    //public function destroy(string $id)
+    public function destroy(Permohonan $permohonan)
     {
-        //
+        // $permohonan = Permohonan::find($id);
+        $permohonan->delete();
+
+        return redirect()->route('permohonan.index')->with('mesej-berjaya', 'Permohonan berjaya dihapuskan');
+
     }
 }
