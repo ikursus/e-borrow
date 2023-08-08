@@ -68,9 +68,9 @@ class PermohonanController extends Controller
      */
     public function edit(Permohonan $permohonan)
     {
-        $permohonan = NULL;
+        $senaraiPegawaiBertanggungjawab = User::select('id', 'name')->get();
 
-        return view('folder-permohonan.template-edit', compact('permohonan'));
+        return view('folder-permohonan.template-edit', compact('permohonan', 'senaraiPegawaiBertanggungjawab'));
     }
 
     /**

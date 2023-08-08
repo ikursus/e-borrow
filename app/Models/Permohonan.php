@@ -13,6 +13,8 @@ class Permohonan extends Model
     // jika nama table tak guna plural
     protected $table = 'permohonan';
 
+    // Untuk protection mass assigment
+    // Iaitu data - data yang boleh disimpan menerusi method Model::create()
     protected $fillable = [
         'pegawai_pemohon_id',
         'pegawai_bertanggungjawab_id',
@@ -20,6 +22,17 @@ class Permohonan extends Model
         'tarikh_jangka_pulang',
         'tujuan_permohonan',
         'lokasi_tujuan',
+        'pengawai_pengesah_id',
+        'tarikh_pengesahan',
+        'pengawai_pengeluar_id',
+        'tarikh_pengeluaran',
+        'pengawai_pengambil_id',
+        'tarikh_ambil',
+        'pengawai_pemulang_id',
+        'tarikh_pulangan',
+        'pengawai_penerima_pulangan_id',
+        'tarikh_terima_pulangan',
+        'catatan_pegawai_penerima',
         'status'
     ];
 
