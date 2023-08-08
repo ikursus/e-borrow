@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permohonan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,15 +13,21 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $pageTitle = '<span class="text-danger">Halaman Dashboard</span>';
+        // Dapatkan senarai permohonan
+        $senaraiPermohonan = Permohonan::latest()->get();
 
-        $senaraiStaff = DB::table('users')->get();
-
-        //return view('dashboard');
+        // Lakukan kira kira
+        $permohonanBaru = Permohonan::where('status', Permohonan::STATUS_BARU)->count();
+        $permohonanDalamProses = Permohonan::where('status', Permohonan::STATUS_DALAM_PROSES)->count();
+        $permohonanDalamPinjaman = Permohonan::where('status', Permohonan::STATUS_DALAM_PINJAMAN)->count();
+        $permohonanSediaDiambil = Permohonan::where('status', Permohonan::STATUS_SEDIA_UNTUK_DIAMBIL)->count();
 
         // Cara 1 Passing Data
         return view('template-dashboard')
-        ->with('pageTitle', $pageTitle)
-        ->with('senaraiStaff', $senaraiStaff);
+        ->with('senaraiPermohonan', $senaraiPermohonan)
+        ->with('permohonanBaru', $permohonanBaru)
+        ->with('permohonanDalamProses', $permohonanDalamProses)
+        ->with('permohonanDalamPinjaman', $permohonanDalamPinjaman)
+        ->with('permohonanSediaDiambil', $permohonanSediaDiambil);
     }
 }

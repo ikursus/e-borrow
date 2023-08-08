@@ -4,27 +4,32 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermohonanController;
+use App\Http\Controllers\PinjamanController;
 use App\Http\Controllers\UserController;
 
 // Halaman utama
-Route::redirect('/', '/login');
+// Route::redirect('/', '/login');
+Route::view('/', 'welcome');
 
+// Route untuk pelawat membuat permohonan pinjaman
+Route::get('pinjaman', [PinjamanController::class, 'create'])->name('pinjaman.create');
+Route::post('pinjaman', [PinjamanController::class, 'store'])->name('pinjaman.store');
+Route::get('pinjaman/status', [PinjamanController::class, 'semakStatus'])->name('pinjaman.status');
+Route::get('pinjaman/result', [PinjamanController::class, 'resultStatus'])->name('pinjaman.result');
 
-// Route::get('/alamat', function(){});
-
+// Authentication
 Route::get('/login', [LoginController::class, 'borangLogin'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.check');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-
+// Route untuk pengguna/admin sistem
 Route::group(['middleware' => 'auth'], function() {
-
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard'); // Invokable method. tiada array dan nama function
 
-    Route::get('/profile', fn() => view('template-profile'));
-    Route::patch('/profile', fn() => 'Kemaskini profile berjaya');
+    Route::get('/profile', fn() => view('template-profile'))->name('profile');
+    Route::patch('/profile', fn() => 'Kemaskini profile berjaya')->name('profile.update');
 
     // CRUD
     // Route::get('/permohonan', fn() => view('folder-permohonan.template-senarai'));
