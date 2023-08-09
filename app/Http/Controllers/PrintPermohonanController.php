@@ -20,7 +20,7 @@ class PrintPermohonanController extends Controller
 
         if ($request->jenis == 'download')
         {
-            return $pdf->download('test.pdf');
+            return $pdf->download($permohonan->ticket . '.pdf');
         }
 
         return $pdf->stream();
