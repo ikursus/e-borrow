@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Permohonan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PermohonanBaruToPemohon;
 
 class PinjamanController extends Controller
 {
@@ -50,9 +52,11 @@ class PinjamanController extends Controller
 
         // Setelah selesai, hantar notifikasi dan redirect ke halaman status pinjaman
         // Hantar notification
+        Mail::to($pemohon->email)->send(new PermohonanBaruToPemohon($permohonan));
 
         // Selepas selesai notifikasi, redirect
-        return redirect()->route('pinjaman.result', ['ticket' => $permohonan->ticket])->with('mesej-berjaya', 'Permohonan berjaya dihantar!');
+        return redirect()->route('pinjaman.result', ['ticket' => $permohonan->ticket])
+        ->with('mesej-berjaya', 'Permohonan berjaya dihantar!');
     }
 
     /**
