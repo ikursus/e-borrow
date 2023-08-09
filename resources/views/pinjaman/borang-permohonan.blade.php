@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-xl-12">
 
-        <form method="POST" action="{{ route('pinjaman.store') }}">
+        <form method="POST" action="{{ route('pinjaman.store') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="card">
@@ -56,6 +56,11 @@
                     <div class="mb-3">
                         <label class="form-label">Lokasi Tujuan</label>
                         <input type="text" class="form-control" name="lokasi_tujuan" value="{{ old('lokasi_tujuan') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Upload Dokumen Sokongan</label>
+                        <input class="form-control" type="file" id="formFile" name="fail_sokongan">
                     </div>
 
                 </div>

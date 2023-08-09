@@ -114,6 +114,17 @@
                             <td>{{ $permohonan->catatan_pegawai_penerima ?? NULL }}</td>
                         </tr>
 
+                        <tr>
+                            <td>Fail Sokongan</td>
+                            <td>
+                                @if (!is_null($permohonan->fail_sokongan))
+                                <a href="{{ asset('uploaded/' . $permohonan->fail_sokongan) }}">{{ asset('uploaded/' . $permohonan->fail_sokongan) }}</a>
+                                @else
+                                Tiada Fail Sokongan
+                                @endif
+                            </td>
+                        </tr>
+
                     </tbody>
                 </table>
             </div>

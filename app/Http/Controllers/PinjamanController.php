@@ -47,6 +47,22 @@ class PinjamanController extends Controller
         $data['status'] = Permohonan::STATUS_BARU;
         $data['ticket'] = Str::random(6);
 
+        // Semak jika ada data fail sokongan
+        if ($request->hasFile('fail_sokongan'))
+        {
+            // Dapatkan fail daripada field fail_sokongan borang permohonan
+            $file = $request->file('fail_sokongan');
+
+            // Simpan fail yang diupload ke dalam folder dokumen
+            // yang akan dicipta dalam folder public/uploaded.
+            // Seterusnya dapatkan dapatkan nama baru file yang telah diupload
+            // function ->store('nama_folder', 'nama_disks_dalam_filesystem.php')
+            $namaBaruFile = $file->store('dokumen', 'public_uploaded');
+
+            // Simpan nama baru fail sokongan yang diupload ke dalam table permohonan
+            $data['fail_sokongan'] = $namaBaruFile;
+        }
+
         // Jika tiada masalah, simpan rekod
         $permohonan = Permohonan::create($data);
 
