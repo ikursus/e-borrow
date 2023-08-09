@@ -35,6 +35,7 @@ class Permohonan extends Model
         'pengawai_penerima_pulangan_id',
         'tarikh_terima_pulangan',
         'catatan_pegawai_penerima',
+        'ticket',
         'status'
     ];
 

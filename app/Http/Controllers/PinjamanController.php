@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Permohonan;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class PinjamanController extends Controller
@@ -42,12 +43,16 @@ class PinjamanController extends Controller
 
         // Tetapkan status permohonan kepada baru
         $data['status'] = Permohonan::STATUS_BARU;
+        $data['ticket'] = Str::random(6);
 
         // Jika tiada masalah, simpan rekod
         $permohonan = Permohonan::create($data);
 
         // Setelah selesai, hantar notifikasi dan redirect ke halaman status pinjaman
-        return redirect()->route('pinjaman.result', ['ticket' => $permohonan->id])->with('mesej-berjaya', 'Permohonan berjaya dihantar!');
+        // Hantar notification
+
+        // Selepas selesai notifikasi, redirect
+        return redirect()->route('pinjaman.result', ['ticket' => $permohonan->ticket])->with('mesej-berjaya', 'Permohonan berjaya dihantar!');
     }
 
     /**
@@ -63,7 +68,7 @@ class PinjamanController extends Controller
      */
     public function resultStatus(Request $request)
     {
-        $permohonan = Permohonan::findOrFail($request->ticket);
+        $permohonan = Permohonan::where('ticket', '=', $request->ticket)->first();
 
         return view('pinjaman.status-permohonan', compact('permohonan'));
     }

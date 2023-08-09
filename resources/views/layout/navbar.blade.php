@@ -23,7 +23,7 @@
             @endauth
 
             @guest
-            <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
+                <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
             @endguest
 
             </ul>

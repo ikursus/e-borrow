@@ -28,6 +28,11 @@
                     <tbody>
 
                         <tr>
+                            <td>No. Ticket</td>
+                            <td>{{ $permohonan->ticket ?? NULL }}</td>
+                        </tr>
+
+                        <tr>
                             <td>Status</td>
                             <td>{{ $permohonan->status ?? NULL }}</td>
                         </tr>

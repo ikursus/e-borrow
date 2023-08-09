@@ -72,7 +72,7 @@
 
         @guest
         <div class="d-grid gap-2">
-            <a href="{{ route('login') }}" class="btn btn-primary">Sila Login</a>
+            <a href="{{ route('login') }}" class="btn btn-primary">Pengurusan Login</a>
         </div>
 
         @endguest
