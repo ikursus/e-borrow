@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermohonanController;
 use App\Http\Controllers\PinjamanController;
+use App\Http\Controllers\PrintPermohonanController;
 use App\Http\Controllers\UserController;
 
 // Halaman utama
@@ -40,6 +41,7 @@ Route::group(['middleware' => 'auth'], function() {
     // Route::get('/permohonan/{id}', fn() => view('folder-permohonan.template-detail'));
     // Route::delete('/permohonan/{id}', fn() => 'Remove/Delete Permohonan');
 
+    Route::get('/permohonan/{id}/print', PrintPermohonanController::class)->name('permohonan.print');
     Route::resource('/permohonan', PermohonanController::class);
 
     // Syarat menggunakan Route resource, pastikan semua function/method di dalam Controller

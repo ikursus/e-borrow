@@ -118,7 +118,9 @@
                             <td>Fail Sokongan</td>
                             <td>
                                 @if (!is_null($permohonan->fail_sokongan))
-                                <a href="{{ asset('uploaded/' . $permohonan->fail_sokongan) }}">{{ asset('uploaded/' . $permohonan->fail_sokongan) }}</a>
+                                <a href="{{ asset('uploaded/' . $permohonan->fail_sokongan) }}">
+                                    {{ asset('uploaded/' . $permohonan->fail_sokongan) }}
+                                </a>
                                 @else
                                 Tiada Fail Sokongan
                                 @endif
@@ -126,6 +128,10 @@
                         </tr>
 
                     </tbody>
+                    <tfoot>
+                        <a href="{{ route('permohonan.print', $permohonan->id) }}" class="btn btn-success me-2">Print</a>
+                        <a href="{{ route('permohonan.print', $permohonan->id) }}?jenis=download" class="btn btn-primary">Download PDF</a>
+                    </tfoot>
                 </table>
             </div>
         </div>

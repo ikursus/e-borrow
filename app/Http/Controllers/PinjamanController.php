@@ -26,6 +26,11 @@ class PinjamanController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'fail_sokongan' => ['nullable', 'sometimes', 'mimes:png,jpg,pdf,csv'],
+            // 'terms' => ['required']
+        ]);
+
         // Dapatkan semua data dari borang
         $data = $request->all(); // $request->validate($data);
 
