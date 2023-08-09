@@ -19,7 +19,7 @@ class PermohonanBaruToPemohon extends Mailable
      */
     public function __construct(public Permohonan $permohonan)
     {
-        //
+        $this->permohonan = $permohonan;
     }
 
     /**
@@ -28,7 +28,7 @@ class PermohonanBaruToPemohon extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Terima kasih. Permohonan anda telah diterima.',
+            subject: $this->permohonan->ticket . ' - Terima kasih. Permohonan anda telah diterima.',
         );
     }
 
