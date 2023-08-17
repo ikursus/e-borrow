@@ -73,12 +73,12 @@
 
                         <tr>
                             <td>Pegawai Pemohon</td>
-                            <td>{{ $permohonan->pegawai_pemohon_id ?? NULL }}</td>
+                            <td>{{ $permohonan->pegawaiPemohon->name ?? NULL }}</td>
                         </tr>
 
                         <tr>
                             <td>Pegawai BertanggungJawab</td>
-                            <td>{{ $permohonan->pegawai_bertanggungjawab_id ?? NULL }}</td>
+                            <td>{{ $permohonan->pegawaiBertanggungjawab->name ?? NULL }}</td>
                         </tr>
 
                         <tr>
@@ -103,7 +103,7 @@
 
                         <tr>
                             <td>Pegawai Pengesah</td>
-                            <td>{{ $permohonan->pegawai_pengesah_id ?? NULL }}</td>
+                            <td>{{ $permohonan->pegawaiPengesah->name ?? NULL }}</td>
                         </tr>
 
                         <tr>
@@ -113,7 +113,7 @@
 
                         <tr>
                             <td>Pegawai Pengeluar</td>
-                            <td>{{ $permohonan->pegawai_pengeluar_id ?? NULL }}</td>
+                            <td>{{ $permohonan->pegawaiPengeluar->name ?? NULL }}</td>
                         </tr>
 
                         <tr>
@@ -123,7 +123,7 @@
 
                         <tr>
                             <td>Pegawai Pegambil</td>
-                            <td>{{ $permohonan->pegawai_pengambil_id ?? NULL }}</td>
+                            <td>{{ $permohonan->pegawaiPengambil->name ?? NULL }}</td>
                         </tr>
 
                         <tr>
@@ -133,7 +133,7 @@
 
                         <tr>
                             <td>Pegawai Pemulang</td>
-                            <td>{{ $permohonan->pegawai_pemulang_id ?? NULL }}</td>
+                            <td>{{ $permohonan->pegawaiPemulang->name ?? NULL }}</td>
                         </tr>
 
                         <tr>
@@ -143,7 +143,7 @@
 
                         <tr>
                             <td>Pegawai Penerima Pulangan</td>
-                            <td>{{ $permohonan->pegawai_pemulang_id ?? NULL }}</td>
+                            <td>{{ $permohonan->pegawaiPenerimaPemulangan->name ?? NULL }}</td>
                         </tr>
 
                         <tr>
@@ -212,6 +212,16 @@
 
                                     </select>
 
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Catatan Pegawai Penerima Pemulangan
+                            </td>
+                            <td>
+                                <div class="mb-3">
+                                    <textarea name="catatan_pegawai_penerima" class="form-control"></textarea>
                                 </div>
                             </td>
                         </tr>

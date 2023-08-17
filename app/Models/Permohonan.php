@@ -79,5 +79,30 @@ class Permohonan extends Model
         return $this->belongsTo(User::class, 'pegawai_bertanggungjawab_id', 'id');
     }
 
+    public function pegawaiPengesah()
+    {
+        return $this->belongsTo(User::class, 'pengawai_pengesah_id', 'id');
+    }
+
+    public function pegawaiPengeluar()
+    {
+        return $this->belongsTo(User::class, 'pengawai_pengeluar_id', 'id');
+    }
+
+    public function pegawaiPengambil()
+    {
+        return $this->belongsTo(User::class, 'pengawai_pengambil_id', 'id');
+    }
+
+    public function pegawaiPemulang()
+    {
+        return $this->belongsTo(User::class, 'pengawai_pemulang_id', 'id');
+    }
+
+    public function pegawaiPenerimaPemulangan()
+    {
+        return $this->belongsTo(User::class, 'pengawai_penerima_pulangan_id', 'id');
+    }
+
 }
 
