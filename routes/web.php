@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PermohonanController;
-use App\Http\Controllers\PinjamanController;
-use App\Http\Controllers\PrintPermohonanController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CarianController;
+use App\Http\Controllers\PinjamanController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PermohonanController;
+use App\Http\Controllers\PrintPermohonanController;
 
 // Halaman utama
 // Route::redirect('/', '/login');
@@ -17,6 +18,10 @@ Route::get('pinjaman', [PinjamanController::class, 'create'])->name('pinjaman.cr
 Route::post('pinjaman', [PinjamanController::class, 'store'])->name('pinjaman.store');
 Route::get('pinjaman/status', [PinjamanController::class, 'semakStatus'])->name('pinjaman.status');
 Route::get('pinjaman/result', [PinjamanController::class, 'resultStatus'])->name('pinjaman.result');
+
+
+// Routing carian user
+Route::get('carian/pbjwb', [CarianController::class, 'pbjwb'])->name('carian.pbjwb');
 
 // Authentication
 Route::get('/login', [LoginController::class, 'borangLogin'])->name('login');
