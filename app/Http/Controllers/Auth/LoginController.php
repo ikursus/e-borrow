@@ -33,8 +33,21 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
+        // Pastikan user yang cuba login, mempunyai role admin
+        // $credentials['role'] = 'admin';
+
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+
+            // // Cara kedua untuk semakan role admin
+            // if (auth()->user()->role != 'admin')
+            // {
+            //     Auth::logout();
+
+            //     return back()->withErrors([
+            //         'email' => 'Awak bukan admin',
+            //     ])->onlyInput('email');
+            // }
 
             return redirect()->intended('dashboard');
         }

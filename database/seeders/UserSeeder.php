@@ -19,7 +19,8 @@ class UserSeeder extends Seeder
             'password' => bcrypt('pass123'), // Hash::make('pass123')
             'telefon' => '0123456789',
             'bahagian_id' => 1,
-            'jawatan' => 'Pegawai Teknologi Maklumat'
+            'jawatan' => 'Pegawai Teknologi Maklumat',
+            'role' => 'admin'
         ]);
 
         DB::table('users')->insert([
@@ -28,7 +29,8 @@ class UserSeeder extends Seeder
             'password' => bcrypt('pass123'), // Hash::make('pass123')
             'telefon' => '0123456789',
             'bahagian_id' => 2,
-            'jawatan' => 'Pegawai Teknologi Maklumat'
+            'jawatan' => 'Pegawai Teknologi Maklumat',
+            'role' => 'user'
         ]);
 
         DB::table('users')->insert([
@@ -37,7 +39,8 @@ class UserSeeder extends Seeder
             'password' => bcrypt('pass123'), // Hash::make('pass123')
             'telefon' => '0123456789',
             'bahagian_id' => 3,
-            'jawatan' => 'Pegawai Teknologi Maklumat'
+            'jawatan' => 'Pegawai Teknologi Maklumat',
+            'role' => 'admin'
         ]);
     }
 }

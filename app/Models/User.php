@@ -24,6 +24,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'telefon',
+        'bahagian_id',
+        'jawatan'
     ];
 
     /**
@@ -45,6 +49,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function isAdmin()
+    {
+        if (auth()->user()->role != 'admin')
+        {
+            return false;
+        }
+
+        return true;
+    }
 
     public function senaraiPermohonan()
     {

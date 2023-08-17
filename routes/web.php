@@ -30,7 +30,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 // Route untuk pengguna/admin sistem
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => ['auth', 'roleAdmin']], function() {
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard'); // Invokable method. tiada array dan nama function
 
