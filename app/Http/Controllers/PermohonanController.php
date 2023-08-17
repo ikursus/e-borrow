@@ -79,7 +79,38 @@ class PermohonanController extends Controller
     // public function update(Request $request, string $id)
     public function update(Request $request, Permohonan $permohonan)
     {
+        $request->validate([
+            'status' => ['required'],
+            'pengawai_pengambil_id' => ['required_if:status,' . Permohonan::STATUS_DALAM_PINJAMAN],
+            'pengawai_pemulang_id' => ['required_if:status,' . Permohonan::STATUS_DIPULANGKAN]
+        ]);
+
         $data = $request->all();
+
+        // Kemaskini rekod pegawai pengesah jika status lulus atau tidak lulus
+        if ($request->status == Permohonan::STATUS_LULUS
+        || $request->status == Permohonan::STATUS_TIDAK_LULUS)
+        {
+            $data['pengawai_pengesah_id'] = auth()->id();
+            $data['tarikh_pengesahan'] = now();
+        }
+
+        // Kemaskini rekod pegawai pengeluar jika status dalam pinjaman
+        elseif ($request->status == Permohonan::STATUS_DALAM_PINJAMAN)
+        {
+            $data['pengawai_pengeluar_id'] = auth()->id();
+            $data['tarikh_pengeluaran'] = now();
+            $data['tarikh_ambil'] = now();
+        }
+
+        // Kemaskini rekod pegawai pengeluar jika status dalam pinjaman
+        elseif ($request->status == Permohonan::STATUS_DIPULANGKAN)
+        {
+            $data['pengawai_penerima_pulangan_id'] = auth()->id();
+            $data['tarikh_terima_pulangan'] = now();
+            $data['tarikh_pulangan'] = now();
+        }
+
 
         // Permohonan::where('id', $id)->update($data);
         // $permohonan = Permohonan::find($id);

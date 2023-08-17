@@ -49,6 +49,7 @@ class Permohonan extends Model
     public const STATUS_TIDAK_LULUS = 'TIDAK LULUS';
     public const STATUS_BATAL = 'BATAL';
     public const STATUS_SEDIA_UNTUK_DIAMBIL = 'SEDIA UNTUK DIAMBIL';
+    public const STATUS_DIPULANGKAN = 'DIPULANGKAN';
     public const STATUS_SELESAI = 'SELESAI';
     public const STATUS_DALAM_PINJAMAN = 'DALAM PINJAMAN';
 
@@ -62,6 +63,7 @@ class Permohonan extends Model
             self::STATUS_TIDAK_LULUS => self::STATUS_TIDAK_LULUS,
             self::STATUS_BATAL => self::STATUS_BATAL,
             self::STATUS_SEDIA_UNTUK_DIAMBIL => self::STATUS_SEDIA_UNTUK_DIAMBIL,
+            self::STATUS_DIPULANGKAN => self::STATUS_DIPULANGKAN,
             self::STATUS_SELESAI => self::STATUS_SELESAI,
             self::STATUS_DALAM_PINJAMAN => self::STATUS_DALAM_PINJAMAN,
         ];
